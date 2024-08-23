@@ -1,8 +1,7 @@
 pipeline {
     agent any
     tools {
-      nodejs 'nodejs'
-
+      maven 'Apache Maven 3.9.8'
     }  
     
     triggers {
@@ -12,17 +11,8 @@ pipeline {
         CI = false          // do not treat warnings as errors
     }
     stages {
-        stage('Install Dependencies and build') {
+        stage('dockerizing') {
             steps {
-                // Use Node.js and npm installed  
-                sh 'npm install'
-                sh 'npm run build'
-                
-            }
-        } 
-        stage('dockerising') {
-            steps {
-                
              withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                  sh 'docker login -u $USERNAME -p $PASSWORD'
     // Your Docker commands using the environment variables
@@ -31,10 +21,6 @@ pipeline {
                 sh 'docker push mwene/qrmomojenk:v1'
              }
             } 
-
         }         
-    
-       
     }    
 }
-    
