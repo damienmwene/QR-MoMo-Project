@@ -13,9 +13,9 @@ pipeline {
              withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                  sh 'docker login -u $USERNAME -p $PASSWORD'
     // Your Docker commands using the environment variables
-                 sh 'docker build -t qrmomojenk:v1 .'
-                sh 'docker tag qrmomojenk:v1 mwene/qrmomojenk:v1'
-                sh 'docker push mwene/qrmomojenk:v1'
+                 sh 'docker build -t qrmomojenk:v2 .'
+                sh 'docker tag qrmomojenk:v2 mwene/qrmomojenk:v2'
+                sh 'docker push mwene/qrmomojenk:v2'
              }
             } 
         }         
