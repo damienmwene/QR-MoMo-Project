@@ -1,10 +1,6 @@
 pipeline {
     agent any
     
-    tools {
-        sonarQube 'sonar-scanner' 
-    }
-    
     triggers {
          pollSCM '* * * * *'
     }
