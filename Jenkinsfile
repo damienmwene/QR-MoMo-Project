@@ -15,7 +15,7 @@ pipeline {
                         sonar-scanner \
                           -Dsonar.projectKey=qr-momo-code-analysis \
                           -Dsonar.sources=. \
-                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.host.url=http://sonarqube:9000 \
                           -Dsonar.login=$SONARQUBE
                     '''
                 }   
